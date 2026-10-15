@@ -340,20 +340,23 @@ function capitolo5(p) {
   if (s.bonifiche === 'si') {
     const voci = Array.isArray(s.vociBonifiche)
       ? s.vociBonifiche
-      : [{ importo: s.importoBonifiche ?? null, documentazione: s.documentazioneBonifiche || '' }];
-    const compilate = voci.filter((r) => r.importo != null || String(r.documentazione || '').trim() !== '');
+      : [{ descrizione: '', importo: s.importoBonifiche ?? null, documentazione: s.documentazioneBonifiche || '' }];
+    const compilate = voci.filter(
+      (r) => r.importo != null || String(r.documentazione || '').trim() !== '' || String(r.descrizione || '').trim() !== '',
+    );
     if (compilate.length > 1) {
       blocchi.push(
         paragrafo('Sono previste bonifiche, così documentate:'),
         tabella(
-          [col('La stima è documentata mediante'), col('Importo stimato', true)],
-          compilate.map((r) => [cTesto(r.documentazione), cEuro(r.importo)]),
-          { etichettaFissa: false, totale: ['Totale', cEuro(CALCOLI.bonifiche(p) || null)] },
+          [col('Descrizione'), col('Importo stimato', true), col('La stima è documentata mediante')],
+          compilate.map((r) => [cTesto(r.descrizione), cEuro(r.importo), cTesto(r.documentazione)]),
+          { etichettaFissa: false, totale: ['Totale', cEuro(CALCOLI.bonifiche(p) || null), ''] },
         ),
       );
     } else {
       const voce = compilate[0] || {};
       blocchi.push(
+        paragrafo(`Descrizione: ${testo(voce.descrizione)}.`),
         paragrafo(`Sono previste bonifiche per un importo stimato pari a: ${euro(voce.importo ?? null)}`),
         paragrafo(`La stima è documentata mediante: ${testo(voce.documentazione)}.`),
       );

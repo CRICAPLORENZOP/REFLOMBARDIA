@@ -37,7 +37,7 @@ const DOCUMENTI_BONIFICA = [
 ];
 
 function rigaVuota() {
-  return { documentazione: '', importo: null };
+  return { descrizione: '', documentazione: '', importo: null };
 }
 
 function vociBonifica() {
@@ -59,6 +59,20 @@ function disegnaBonifiche() {
   voci.forEach((riga, indice) => {
     const blocco = document.createElement('div');
     blocco.className = 'riga-bonifica';
+
+    const campoDescrizione = document.createElement('label');
+    campoDescrizione.className = 'campo';
+    const etichettaDescrizione = document.createElement('span');
+    etichettaDescrizione.textContent = 'Descrizione';
+    const descrizione = document.createElement('input');
+    descrizione.type = 'text';
+    descrizione.placeholder = 'es. bonifica terreno area nord';
+    descrizione.value = riga.descrizione || '';
+    descrizione.addEventListener('input', () => {
+      riga.descrizione = descrizione.value;
+      scrivi('statoFatto.vociBonifiche', voci);
+    });
+    campoDescrizione.append(etichettaDescrizione, descrizione);
 
     const campoImporto = document.createElement('label');
     campoImporto.className = 'campo';
@@ -98,7 +112,7 @@ function disegnaBonifiche() {
     });
     campoDocumento.append(etichettaDocumento, scelta);
 
-    blocco.append(campoImporto, campoDocumento);
+    blocco.append(campoDescrizione, campoImporto, campoDocumento);
 
     if (voci.length > 1) {
       const elimina = document.createElement('button');

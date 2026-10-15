@@ -67,8 +67,8 @@ export function progettoVuoto() {
       },
       condizioniAltro: '',
       bonifiche: '',
-      // Ogni riga è un importo con il documento che lo giustifica (cap. 5.4)
-      vociBonifiche: [{ importo: null, documentazione: '' }],
+      // Ogni riga è una bonifica: cosa riguarda, l'importo e il documento che lo giustifica (cap. 5.4)
+      vociBonifiche: [{ descrizione: '', importo: null, documentazione: '' }],
     },
     statoProgetto: {
       descrizione: '',
@@ -250,8 +250,13 @@ function adattaDatiVecchi(unito, originale) {
   if (senzaRighe) {
     const importo = salvato.importoBonifiche ?? null;
     const documentazione = salvato.documentazioneBonifiche || '';
-    stato.vociBonifiche = [{ importo, documentazione }];
+    stato.vociBonifiche = [{ descrizione: '', importo, documentazione }];
   }
+  stato.vociBonifiche = stato.vociBonifiche.map((riga) => ({
+    descrizione: riga.descrizione || '',
+    importo: riga.importo ?? null,
+    documentazione: riga.documentazione || '',
+  }));
   delete stato.importoBonifiche;
   delete stato.documentazioneBonifiche;
 }

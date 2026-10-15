@@ -36,7 +36,7 @@ jobs:
           tagName: v__VERSION__
           releaseName: 'REF Lombardia v__VERSION__'
           releaseBody: |
-            Zoom della finestra con Ctrl e la rotellina del mouse. Ctrl e 0 riporta la dimensione normale.
+            Al punto 5.4 ogni bonifica ha il campo Descrizione, prima dell'importo stimato. La descrizione compare anche nella relazione esportata.
 
             Scarica l'installer per installare o sostituire la versione precedente.
           releaseDraft: false
