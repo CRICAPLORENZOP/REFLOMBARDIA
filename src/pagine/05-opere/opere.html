@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opere pubbliche e cessioni – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="opere.css" />
+    <script type="module" src="opere.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Opere pubbliche, cessioni e monetizzazioni</h1>
+        <p class="sottotitolo">Opere di urbanizzazione, opere pubbliche, standard qualitativi (capitolo 7) e cessioni (capitolo 8).</p>
+
+        <div class="due-colonne">
+          <section class="scheda">
+            <h2><span class="capitolo">7.1</span> Opere di urbanizzazione primaria</h2>
+            <div id="tabella-primaria"></div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">7.2</span> Opere di urbanizzazione secondaria</h2>
+            <div id="tabella-secondaria"></div>
+          </section>
+        </div>
+
+        <div class="due-colonne">
+          <section class="scheda">
+            <h2><span class="capitolo">7.3</span> Opere pubbliche aggiuntive</h2>
+            <div id="tabella-aggiuntive"></div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">7.4</span> Standard qualitativi</h2>
+            <div id="tabella-standard"></div>
+          </section>
+        </div>
+
+        <section class="scheda">
+          <h2><span class="capitolo">8.1</span> Aree cedute</h2>
+          <div id="tabella-aree"></div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">8.2</span> Monetizzazioni</h2>
+          <div id="tabella-monetizzazioni"></div>
+        </section>
+
+        <section class="scheda">
+          <h2 data-aiuto="destinazioniImporti">Dove finiscono questi importi</h2>
+          <p class="nota primo">Ogni importo viene contato <strong>una sola volta</strong> nel quadro economico:</p>
+          <table class="destinazioni-importi">
+            <tr>
+              <td>Urbanizzazioni (7.1 + 7.2)</td>
+              <td data-mostra="calc:urbanizzazioni" data-unita="€"></td>
+              <td>costi: voce "Urbanizzazioni" (cap. 17, 21)</td>
+            </tr>
+            <tr>
+              <td>Opere pubbliche aggiuntive (7.3)</td>
+              <td data-mostra="calc:opereAggiuntive" data-unita="€"></td>
+              <td>costi generali (cap. 13), voce "Opere pubbliche" (cap. 17, 21)</td>
+            </tr>
+            <tr>
+              <td>Standard qualitativi (7.4)</td>
+              <td data-mostra="calc:standardQualitativi" data-unita="€"></td>
+              <td>costi generali (cap. 13), benefici pubblici (cap. 23)</td>
+            </tr>
+            <tr>
+              <td>Aree cedute (8.1)</td>
+              <td data-mostra="calc:areeCedute" data-unita="€"></td>
+              <td>benefici pubblici (cap. 23)</td>
+            </tr>
+            <tr>
+              <td>Monetizzazioni (8.2)</td>
+              <td data-mostra="calc:monetizzazioni" data-unita="€"></td>
+              <td>costi generali (cap. 13), benefici pubblici (cap. 23)</td>
+            </tr>
+          </table>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

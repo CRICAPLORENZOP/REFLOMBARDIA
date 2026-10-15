@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stato di fatto – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="stato-fatto.css" />
+    <script type="module" src="stato-fatto.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Stato di fatto</h1>
+        <p class="sottotitolo">Situazione attuale dell'area e degli edifici (capitolo 5).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">5.1</span> Descrizione</h2>
+          <label class="campo">
+            <span>L'area si presenta attualmente come:</span>
+            <textarea
+              data-campo="statoFatto.descrizione"
+              placeholder="Edifici esistenti, utilizzo, stato manutentivo, condizioni di degrado…"
+            ></textarea>
+          </label>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">5.2</span> Consistenza edilizia esistente</h2>
+          <div id="tabella-fabbricati"></div>
+          <p class="nota">Il volume totale esistente verrà proposto automaticamente come quantità da demolire (cap. 12.1).</p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">5.3</span> Condizioni dell'area</h2>
+          <p class="nota primo">Sono state rilevate le seguenti condizioni:</p>
+          <div class="scelte condizioni">
+            <label><input type="checkbox" data-campo="statoFatto.condizioni.degrado" /> Degrado edilizio</label>
+            <label><input type="checkbox" data-campo="statoFatto.condizioni.abbandono" /> Abbandono</label>
+            <label><input type="checkbox" data-campo="statoFatto.condizioni.dismissione" /> Dismissione</label>
+            <label><input type="checkbox" data-campo="statoFatto.condizioni.ambientali" /> Criticità ambientali</label>
+            <label><input type="checkbox" data-campo="statoFatto.condizioni.infrastrutturali" /> Criticità infrastrutturali</label>
+            <label><input type="checkbox" data-campo="statoFatto.condizioni.altro" /> Altro</label>
+          </div>
+          <label class="campo altro" data-visibile-se="statoFatto.condizioni.altro">
+            <span>Specifica</span>
+            <input type="text" data-campo="statoFatto.condizioniAltro" />
+          </label>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">5.4</span> Costi di risanamento / bonifica</h2>
+          <div class="scelte">
+            <label>
+              <input type="radio" name="bonifiche" value="no" data-campo="statoFatto.bonifiche" />
+              Non sono previste bonifiche
+            </label>
+            <label>
+              <input type="radio" name="bonifiche" value="si" data-campo="statoFatto.bonifiche" />
+              Sono previste bonifiche
+            </label>
+          </div>
+          <div id="tabella-bonifiche" data-visibile-se="statoFatto.bonifiche=si"></div>
+          <p class="nota" data-visibile-se="statoFatto.bonifiche=si">
+            Puoi aggiungere una riga per ogni importo. Il totale verrà riportato automaticamente nei costi (cap. 17),
+            nel quadro economico (cap. 21), nella componente privata (cap. 23) e nel quadro degli input (cap. 26).
+          </p>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

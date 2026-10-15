@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Area e urbanistica – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="area.css" />
+    <script type="module" src="area.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Area e inquadramento urbanistico</h1>
+        <p class="sottotitolo">Identificazione dell'area (capitolo 3) e disciplina urbanistica (capitolo 4).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">3.1</span> Localizzazione</h2>
+          <div class="collegato">
+            Comune di <strong data-mostra="frontespizio.comune"></strong>,
+            <strong data-mostra="frontespizio.indirizzo"></strong>
+            <span class="origine">dal passo 1 – Frontespizio</span>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">3.2</span> Identificazione catastale</h2>
+          <div id="tabella-catasto"></div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">3.3</span> Superficie territoriale e <span class="capitolo">3.4</span> fondiaria</h2>
+          <div class="griglia">
+            <div class="campo">
+              <span>Superficie territoriale (ST)</span>
+              <label class="scelta-st">
+                <input type="checkbox" data-campo="area.stDaCatasto" />
+                Usa il totale catastale
+              </label>
+              <div class="collegato" data-visibile-se="area.stDaCatasto">
+                ST = <strong data-mostra="calc:totaleCatastale" data-unita="m²"></strong>
+                <span class="origine">da tabella 3.2</span>
+              </div>
+              <input type="text" id="st-manuale" data-campo="area.st" data-tipo="numero" placeholder="m²" />
+            </div>
+            <label class="campo">
+              <span>Superficie fondiaria (SF) in m²</span>
+              <input type="text" data-campo="area.sf" data-tipo="numero" />
+            </label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">4.1</span> Strumento urbanistico vigente</h2>
+          <div class="griglia">
+            <label class="campo largo">
+              <span>Secondo il vigente PGT l'area ricade in:</span>
+              <textarea data-campo="urbanistica.descrizioneAmbito" placeholder="Descrizione dell'ambito urbanistico"></textarea>
+            </label>
+            <label class="campo">
+              <span>Destinazione urbanistica</span>
+              <input type="text" data-campo="urbanistica.destinazione" />
+            </label>
+            <label class="campo">
+              <span>Indice edificatorio</span>
+              <input type="text" data-campo="urbanistica.indice" placeholder="es. 0,8 m²/m²" />
+            </label>
+            <label class="campo">
+              <span>SLP/SUL ammessa (m²)</span>
+              <input type="text" data-campo="urbanistica.slpAmmessa" data-tipo="numero" />
+            </label>
+            <label class="campo">
+              <span>Altezza massima (m)</span>
+              <input type="text" data-campo="urbanistica.altezzaMax" data-tipo="numero" />
+            </label>
+            <label class="campo">
+              <span>Destinazioni d'uso ammesse</span>
+              <input type="text" data-campo="urbanistica.destinazioniAmmesse" />
+            </label>
+            <label class="campo">
+              <span>Dotazione di servizi</span>
+              <input type="text" data-campo="urbanistica.dotazioneServizi" />
+            </label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">4.2</span> Ambito di rigenerazione</h2>
+          <div class="scelte">
+            <label>
+              <input type="radio" name="ambito-rigenerazione" value="si" data-campo="urbanistica.ambitoRigenerazione" />
+              L'area è ricompresa negli ambiti di rigenerazione individuati dal Comune
+            </label>
+            <label>
+              <input type="radio" name="ambito-rigenerazione" value="no" data-campo="urbanistica.ambitoRigenerazione" />
+              L'area non è ricompresa negli ambiti di rigenerazione: l'applicabilità della disciplina viene motivata
+            </label>
+          </div>
+          <label class="campo motivazione" data-visibile-se="urbanistica.ambitoRigenerazione=no">
+            <span>Motivazione</span>
+            <textarea data-campo="urbanistica.motivazione"></textarea>
+          </label>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">4.3</span> Procedimento urbanistico</h2>
+          <div class="collegato">
+            L'intervento viene attuato mediante: <strong data-mostra="calc:procedimentoTesto"></strong>
+            <span class="origine">dal passo 1 – Frontespizio</span>
+          </div>
+          <p class="nota">Eventuale convenzione urbanistica avente ad oggetto:</p>
+          <div id="tabella-convenzione"></div>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

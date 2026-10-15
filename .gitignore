@@ -1,0 +1,6 @@
+src-tauri/target/
+src-tauri/gen/
+node_modules/
+
+# L'installer ufficiale lo crea la release su GitHub, non questa copia locale.
+INSTALLAZIONE/

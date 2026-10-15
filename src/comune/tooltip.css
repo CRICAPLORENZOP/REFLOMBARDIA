@@ -1,0 +1,77 @@
+/* Icona ⓘ e bolla di aiuto (vedi tooltip.js e aiuti.js) */
+
+.icona-aiuto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  margin-left: 6px;
+  padding: 0;
+  border: 1px solid var(--blu);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--blu);
+  font: italic 700 11px/1 Georgia, 'Times New Roman', serif;
+  vertical-align: middle;
+  cursor: help;
+}
+
+.icona-aiuto:hover,
+.icona-aiuto:focus-visible,
+.icona-aiuto[aria-expanded='true'] {
+  background: var(--blu);
+  color: #fff;
+  outline: none;
+}
+
+th .icona-aiuto {
+  width: 15px;
+  height: 15px;
+  margin-left: 4px;
+  font-size: 10px;
+}
+
+.bolla-aiuto {
+  position: fixed;
+  z-index: 1000;
+  max-width: 360px;
+  padding: 10px 12px;
+  border: 1px solid var(--grigio-bordo);
+  border-left: 4px solid var(--blu);
+  border-radius: var(--raggio);
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  color: var(--testo);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.bolla-aiuto[hidden] {
+  display: none;
+}
+
+.bolla-aiuto strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blu-scuro);
+}
+
+.bolla-aiuto p {
+  margin: 0;
+}
+
+.bolla-aiuto .rif {
+  margin-top: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: var(--blu-chiaro);
+  font-size: 12px;
+}
+
+.bolla-aiuto .rif::before {
+  content: 'Riferimento normativo: ';
+  font-weight: 600;
+}

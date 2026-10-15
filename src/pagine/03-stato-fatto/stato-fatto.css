@@ -1,0 +1,46 @@
+/* Stili specifici della videata "Stato di fatto" */
+
+.nota.primo {
+  margin: 0 0 10px;
+}
+
+.condizioni {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+}
+
+.altro {
+  margin-top: 14px;
+  max-width: 600px;
+}
+
+#tabella-bonifiche {
+  margin-top: 14px;
+}
+
+.elenco-bonifiche {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.riga-bonifica {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(240px, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.totale-bonifiche {
+  margin: 12px 0 0;
+  font-weight: 700;
+  color: var(--blu-scuro);
+}
+
+#tabella-bonifiche .bottone.secondario {
+  margin-top: 12px;
+}
+
+#tabella-fabbricati td:first-child input {
+  max-width: 90px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ricavi – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="ricavi.css" />
+    <script type="module" src="ricavi.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Determinazione dei ricavi</h1>
+        <p class="sottotitolo">
+          Questa videata si compila quasi da sola: usa le superfici del passo 4 e i valori del passo 6 (capitolo 10).
+        </p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">10.1</span> Ricavi da vendita</h2>
+          <p class="formula">Ricavo = superficie commerciale × valore unitario</p>
+          <div id="tabella-ricavi"></div>
+          <div id="controllo-ricavi" class="controllo attenzione" hidden></div>
+          <p class="nota">
+            Superfici dalla tabella 6.2 (passo 4 – Stato di progetto), valori dalla tabella 9.3 (passo 6 – Mercato
+            immobiliare). Per cambiarli torna a quelle videate.
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">10.2</span> Box e pertinenze</h2>
+          <div class="collegato">
+            <strong data-mostra="calc:ricaviPertinenze" data-unita="€"></strong>
+            <span class="origine">totale tabella 6.3 – passo 4</span>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">10.3</span> Altri ricavi</h2>
+          <div class="griglia">
+            <label class="campo">
+              <span>Importo (€)</span>
+              <input type="text" data-campo="ricavi.altriRicavi" data-tipo="numero" />
+            </label>
+            <label class="campo">
+              <span>Descrizione (facoltativo)</span>
+              <input type="text" data-campo="ricavi.descrizioneAltri" placeholder="es. locazioni, cessione diritti…" />
+            </label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">10.4</span> Ricavi complessivi</h2>
+          <table class="riepilogo">
+            <tr>
+              <td>10.1 Ricavi da vendita</td>
+              <td data-mostra="calc:ricaviVendita" data-unita="€"></td>
+            </tr>
+            <tr>
+              <td>10.2 Box e pertinenze</td>
+              <td data-mostra="calc:ricaviPertinenze" data-unita="€"></td>
+            </tr>
+            <tr>
+              <td>10.3 Altri ricavi</td>
+              <td data-mostra="calc:altriRicavi" data-unita="€"></td>
+            </tr>
+          </table>
+          <div class="totale-grande">
+            RICAVI COMPLESSIVI <strong data-mostra="calc:ricaviComplessivi" data-unita="€"></strong>
+          </div>
+          <p class="nota">
+            Questo totale verrà usato nei costi di commercializzazione (cap. 15), nel modello di valutazione (cap. 17),
+            nel quadro economico (cap. 21) e nelle conclusioni (cap. 25).
+          </p>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

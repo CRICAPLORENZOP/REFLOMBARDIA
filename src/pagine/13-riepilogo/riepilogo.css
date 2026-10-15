@@ -1,0 +1,237 @@
+/* Stili specifici della videata "Riepilogo ed esportazione" */
+
+.nota.primo {
+  margin: 0 0 10px;
+}
+
+.quadro-input {
+  width: 100%;
+  max-width: 860px;
+}
+
+.quadro-input td.unita {
+  width: 60px;
+  color: var(--grigio-testo);
+}
+
+.quadro-input td.valore {
+  width: 150px;
+}
+
+.quadro-input input.fonte {
+  width: 100%;
+}
+
+.scelte.colonne-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  max-width: 860px;
+  margin-bottom: 12px;
+}
+
+.bottone.piccolo {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.pulsanti-esporta {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.manca {
+  background: #fff3a0;
+}
+
+/* ---------- Anteprima: simula un foglio A4 ---------- */
+
+.scheda.larga {
+  max-width: none;
+}
+
+.foglio {
+  max-width: 21cm;
+  margin: 0 auto;
+  padding: 2cm;
+  font-family: Calibri, 'Segoe UI', sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000;
+  background: #fff;
+  border: 1px solid var(--grigio-bordo);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.foglio h2 {
+  margin: 18pt 0 6pt;
+  font-size: 13pt;
+  color: #1f3864;
+  break-after: avoid;
+}
+
+.foglio h3 {
+  margin: 10pt 0 4pt;
+  font-size: 11pt;
+  color: #2f5496;
+  break-after: avoid;
+}
+
+.foglio p {
+  margin: 0 0 6pt;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+.foglio p.centrato {
+  text-align: center;
+}
+
+.foglio p.copertina-titolo {
+  margin-top: 4cm;
+  text-align: center;
+  font-size: 20pt;
+  font-weight: 700;
+  color: #1f3864;
+}
+
+.foglio p.copertina-sottotitolo {
+  margin-top: 1cm;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: 700;
+}
+
+.foglio p.nota {
+  font-size: 9pt;
+  font-style: italic;
+  color: #595959;
+}
+
+.foglio p.evidenza {
+  font-weight: 700;
+}
+
+.foglio p.firma {
+  margin-bottom: 2pt;
+  text-align: right;
+}
+
+.foglio p.campo-relazione {
+  margin-bottom: 3pt;
+  text-align: left;
+}
+
+.foglio ul {
+  margin: 0 0 6pt;
+  padding-left: 18pt;
+}
+
+.foglio table {
+  width: 100%;
+  margin: 4pt 0 10pt;
+  border-collapse: collapse;
+  font-size: 10pt;
+  break-inside: auto;
+}
+
+.foglio table.piccola {
+  font-size: 7.5pt;
+}
+
+.foglio th,
+.foglio td {
+  padding: 3pt 5pt;
+  border: 1px solid #8eaadb;
+  text-align: left;
+  vertical-align: top;
+}
+
+.foglio th,
+.foglio tfoot td {
+  font-weight: 700;
+  background: #d9e2f3;
+}
+
+.foglio tr {
+  break-inside: avoid;
+}
+
+.foglio tr.sezione td {
+  font-weight: 700;
+  background: #f2f2f2;
+}
+
+.foglio .numero {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.foglio .interruzione {
+  margin: 1cm -2cm;
+  border-top: 2px dashed var(--grigio-bordo);
+  break-after: page;
+}
+
+/* ---------- Stampa (Esporta PDF): si stampa solo il foglio ---------- */
+
+@page {
+  size: A4;
+  margin: 2cm;
+}
+
+@media print {
+  html,
+  body,
+  .app,
+  .contenuto {
+    display: block;
+    height: auto;
+    overflow: visible;
+    padding: 0;
+    background: #fff;
+  }
+
+  #intestazione,
+  #passi,
+  #piede,
+  .contenuto > h1,
+  .contenuto > .sottotitolo,
+  .contenuto > .scheda:not(#scheda-anteprima),
+  #scheda-anteprima > h2 {
+    display: none !important;
+  }
+
+  #scheda-anteprima {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+  }
+
+  .foglio {
+    max-width: none;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .foglio .interruzione {
+    margin: 0;
+    border: none;
+  }
+
+  .manca {
+    background: #fff3a0 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .foglio th,
+  .foglio tfoot td,
+  .foglio tr.sezione td {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

@@ -1,0 +1,124 @@
+/* Stili specifici della videata "Modello di valutazione" */
+
+.modello {
+  margin-top: 14px;
+}
+
+.scelte.in-linea {
+  flex-direction: row;
+  gap: 18px;
+  padding-top: 6px;
+}
+
+.motivazione {
+  margin-top: 14px;
+}
+
+.nota.primo {
+  margin: 0 0 12px;
+}
+
+.stretto {
+  max-width: 260px;
+}
+
+.scegli-modello {
+  max-width: 1100px;
+  padding: 16px;
+  text-align: center;
+  color: var(--grigio-testo);
+  border: 2px dashed var(--grigio-bordo);
+  border-radius: var(--raggio);
+}
+
+.riepilogo {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 14px;
+  border-collapse: collapse;
+}
+
+.riepilogo td {
+  padding: 6px 4px;
+  border-bottom: 1px solid var(--grigio-bordo);
+}
+
+.riepilogo td:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+.riepilogo tr.forte td {
+  font-weight: 700;
+  border-top: 2px solid var(--blu);
+}
+
+.totale-grande {
+  max-width: 560px;
+}
+
+.totale-grande.negativo {
+  background: #a23b2a;
+}
+
+.margine-percentuale {
+  max-width: 560px;
+  margin-top: 10px;
+}
+
+.formula {
+  margin: 0 0 12px;
+  font-family: Consolas, monospace;
+  color: var(--grigio-testo);
+}
+
+.origine-riga {
+  margin-left: 6px;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--grigio-testo);
+}
+
+/* Tabelle anno per anno: possono essere larghe, quindi scorrono in orizzontale */
+.scheda.larga {
+  max-width: none;
+}
+
+.scorrevole {
+  overflow-x: auto;
+}
+
+.tabella-anni th,
+.tabella-anni td {
+  white-space: nowrap;
+}
+
+.tabella-anni input {
+  width: 64px;
+  text-align: right;
+}
+
+.tabella-anni .somma-ok {
+  color: var(--verde);
+  font-weight: 600;
+}
+
+.tabella-anni .somma-errata {
+  color: var(--arancio);
+  font-weight: 700;
+}
+
+.tabella-anni tr.flusso td {
+  font-weight: 700;
+  background: var(--blu-chiaro);
+  border-top: 2px solid var(--blu);
+}
+
+.tabella-anni tr.secondaria td {
+  font-size: 12px;
+  color: var(--grigio-testo);
+}
+
+.tabella-anni td.negativo {
+  color: #a23b2a;
+}

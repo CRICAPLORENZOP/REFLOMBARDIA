@@ -1,0 +1,28 @@
+/* Stili specifici della videata "Ricavi" */
+
+.formula {
+  margin: 0 0 12px;
+  font-family: Consolas, monospace;
+  color: var(--grigio-testo);
+}
+
+.riepilogo {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 14px;
+  border-collapse: collapse;
+}
+
+.riepilogo td {
+  padding: 6px 4px;
+  border-bottom: 1px solid var(--grigio-bordo);
+}
+
+.riepilogo td:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+.totale-grande {
+  max-width: 560px;
+}

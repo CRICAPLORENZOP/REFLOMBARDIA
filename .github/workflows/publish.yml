@@ -1,0 +1,46 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - release
+
+jobs:
+  publish-tauri:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: windows-latest
+            args: ''
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Build and publish
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: 'REF Lombardia v__VERSION__'
+          releaseBody: |
+            Prima release di REF Lombardia, la compilazione guidata della Relazione economico-finanziaria.
+
+            Include i tooltip con i requisiti dell'Allegato A e l'apertura della delibera e dell'Allegato A dalla barra laterale.
+
+            Scarica l'installer se è la prima installazione.
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}

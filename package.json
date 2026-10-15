@@ -1,0 +1,11 @@
+{
+  "name": "ref-lombardia",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compilazione guidata della Relazione Economico-Finanziaria (REF) - Regione Lombardia",
+  "scripts": {
+    "tauri": "cargo tauri",
+    "dev": "cargo tauri dev",
+    "build": "cargo tauri build"
+  }
+}

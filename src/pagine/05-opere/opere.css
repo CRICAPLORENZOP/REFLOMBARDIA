@@ -1,0 +1,38 @@
+/* Stili specifici della videata "Opere pubbliche e cessioni" */
+
+.due-colonne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 1100px;
+}
+
+.due-colonne .scheda {
+  margin-bottom: 18px;
+}
+
+.nota.primo {
+  margin: 0 0 10px;
+}
+
+.destinazioni-importi {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.destinazioni-importi td {
+  padding: 7px 6px;
+  border-bottom: 1px solid var(--grigio-bordo);
+}
+
+.destinazioni-importi td:nth-child(2) {
+  text-align: right;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.destinazioni-importi td:nth-child(3) {
+  padding-left: 18px;
+  font-size: 12px;
+  color: var(--grigio-testo);
+}

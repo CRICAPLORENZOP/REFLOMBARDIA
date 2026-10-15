@@ -1,0 +1,19 @@
+/* Stili specifici della videata "Stato di progetto" */
+
+.nota.primo {
+  margin: 16px 0 10px;
+}
+
+.suggerimento {
+  font-size: 11px;
+  color: var(--grigio-testo);
+}
+
+.opere {
+  margin-top: 16px;
+}
+
+#tabella-destinazioni td.fissa,
+#tabella-pertinenze td.fissa {
+  width: 160px;
+}

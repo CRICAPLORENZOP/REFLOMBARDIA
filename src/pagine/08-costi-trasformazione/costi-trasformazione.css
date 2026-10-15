@@ -1,0 +1,26 @@
+/* Stili specifici della videata "Costo area e trasformazione" */
+
+.metodo,
+.fonte {
+  max-width: 320px;
+  margin-bottom: 14px;
+}
+
+.fonte {
+  margin: 14px 0 0;
+}
+
+.bottone.piccolo {
+  padding: 3px 10px;
+  font-size: 12px;
+}
+
+#tabella-costo-area td.fissa,
+#tabella-costruzione td.fissa,
+#tabella-demolizioni td.fissa {
+  width: 180px;
+}
+
+#tabella-demolizioni td:nth-child(2) input {
+  max-width: 80px;
+}

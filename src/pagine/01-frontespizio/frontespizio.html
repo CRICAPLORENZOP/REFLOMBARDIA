@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontespizio e soggetti – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="frontespizio.css" />
+    <script type="module" src="frontespizio.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Frontespizio e soggetti</h1>
+        <p class="sottotitolo">Dati generali dell'intervento e soggetti coinvolti (capitoli 1 e 2).</p>
+
+        <section class="scheda">
+          <h2 data-aiuto="frontespizio">Intervento di rigenerazione urbana</h2>
+          <div class="griglia">
+            <label class="campo largo">
+              <span>Denominazione dell'intervento</span>
+              <input type="text" data-campo="frontespizio.denominazione" placeholder="es. Rigenerazione ex area industriale Via Roma" />
+            </label>
+            <label class="campo">
+              <span>Comune</span>
+              <input type="text" data-campo="frontespizio.comune" />
+            </label>
+            <label class="campo">
+              <span>Provincia</span>
+              <input type="text" data-campo="frontespizio.provincia" />
+            </label>
+            <label class="campo">
+              <span>Ambito</span>
+              <input type="text" data-campo="frontespizio.ambito" />
+            </label>
+            <label class="campo">
+              <span>Indirizzo / località</span>
+              <input type="text" data-campo="frontespizio.indirizzo" />
+            </label>
+            <label class="campo">
+              <span>Procedimento</span>
+              <select data-campo="frontespizio.procedimento">
+                <option value="">— scegli —</option>
+                <option>Piano Attuativo</option>
+                <option>PDC convenzionato</option>
+                <option>PII</option>
+                <option>Altro</option>
+              </select>
+            </label>
+            <label class="campo" data-visibile-se="frontespizio.procedimento=Altro">
+              <span>Specifica il procedimento</span>
+              <input type="text" data-campo="frontespizio.procedimentoAltro" />
+            </label>
+            <label class="campo">
+              <span>Data della relazione</span>
+              <input type="date" data-campo="frontespizio.data" />
+            </label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">2.1</span> Soggetto proponente</h2>
+          <div class="griglia">
+            <label class="campo">
+              <span>Denominazione</span>
+              <input type="text" data-campo="soggetti.proponente.denominazione" />
+            </label>
+            <label class="campo">
+              <span>Sede</span>
+              <input type="text" data-campo="soggetti.proponente.sede" />
+            </label>
+            <label class="campo">
+              <span>C.F. / P.IVA</span>
+              <input type="text" data-campo="soggetti.proponente.cfPiva" />
+            </label>
+            <label class="campo">
+              <span>Rappresentante legale</span>
+              <input type="text" data-campo="soggetti.proponente.rappresentante" />
+            </label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">2.2</span> Proprietà</h2>
+          <label class="campo">
+            <span>Proprietario/i</span>
+            <textarea data-campo="soggetti.proprieta" placeholder="Uno per riga"></textarea>
+          </label>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">2.3</span> Tecnico incaricato della REF</h2>
+          <div class="griglia">
+            <label class="campo">
+              <span>Nome e cognome</span>
+              <input type="text" data-campo="soggetti.tecnico.nome" />
+            </label>
+            <label class="campo">
+              <span>Qualifica</span>
+              <input type="text" data-campo="soggetti.tecnico.qualifica" />
+            </label>
+            <label class="campo">
+              <span>Ordine / Collegio</span>
+              <input type="text" data-campo="soggetti.tecnico.ordine" />
+            </label>
+            <label class="campo">
+              <span>Numero di iscrizione</span>
+              <input type="text" data-campo="soggetti.tecnico.iscrizione" />
+            </label>
+          </div>
+          <p class="nota">
+            Proponente, proprietà e tecnico vengono riportati automaticamente anche nel frontespizio e nella
+            sottoscrizione finale (cap. 28): si scrivono una volta sola.
+          </p>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

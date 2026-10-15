@@ -1,0 +1,531 @@
+/* Stili condivisi da tutte le videate: colori, struttura, campi, tabelle, pulsanti. */
+
+:root {
+  --blu: #1f4e79;
+  --blu-scuro: #163a5a;
+  --blu-chiaro: #e8f0f8;
+  --verde: #2e7d4f;
+  --arancio: #b8660b;
+  --grigio-sfondo: #f3f5f8;
+  --grigio-bordo: #d5dbe3;
+  --grigio-testo: #5b6675;
+  --testo: #1d2733;
+  --raggio: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--testo);
+  background: var(--grigio-sfondo);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Struttura della finestra ---------- */
+
+.app {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'intestazione intestazione'
+    'passi contenuto'
+    'passi piede';
+  height: 100vh;
+}
+
+#intestazione {
+  grid-area: intestazione;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 20px;
+  background: var(--blu);
+  color: #fff;
+}
+
+.marchio {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.marchio span {
+  font-weight: 300;
+}
+
+.info-progetto {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.nome-progetto {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nome-file {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+#intestazione.modificato .nome-file {
+  color: #ffd27a;
+  opacity: 1;
+}
+
+.azioni-file {
+  display: flex;
+  gap: 8px;
+}
+
+#intestazione .bottone.secondario {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+#intestazione .bottone:not(.secondario) {
+  background: #fff;
+  color: var(--blu);
+}
+
+#passi {
+  grid-area: passi;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border-right: 1px solid var(--grigio-bordo);
+  padding: 12px 0 0;
+}
+
+#passi ol {
+  flex: 1;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.documenti {
+  flex: none;
+  border-top: 1px solid var(--grigio-bordo);
+  padding: 10px 12px 12px;
+  background: var(--grigio-sfondo);
+}
+
+.documenti p {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--grigio-testo);
+}
+
+.documenti .documento {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 7px 8px;
+  border: 1px solid var(--grigio-bordo);
+  border-radius: var(--raggio);
+  background: #fff;
+  color: var(--blu);
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.documenti .documento:hover {
+  background: var(--blu-chiaro);
+}
+
+.passo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  color: var(--testo);
+  text-decoration: none;
+  border-left: 4px solid transparent;
+}
+
+a.passo:hover {
+  background: var(--grigio-sfondo);
+}
+
+.passo.attivo {
+  background: var(--blu-chiaro);
+  border-left-color: var(--blu);
+}
+
+.passo.non-pronto {
+  color: #a0a8b3;
+  cursor: default;
+}
+
+.numero-passo {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--grigio-sfondo);
+  border: 1px solid var(--grigio-bordo);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.passo.attivo .numero-passo {
+  background: var(--blu);
+  border-color: var(--blu);
+  color: #fff;
+}
+
+.testo-passo {
+  display: flex;
+  flex-direction: column;
+}
+
+.testo-passo strong {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.testo-passo small {
+  font-size: 11px;
+  color: var(--grigio-testo);
+}
+
+.contenuto {
+  grid-area: contenuto;
+  overflow-y: auto;
+  padding: 24px 32px 40px;
+}
+
+.contenuto h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  color: var(--blu-scuro);
+}
+
+.contenuto .sottotitolo {
+  margin: 0 0 20px;
+  color: var(--grigio-testo);
+}
+
+#piede {
+  grid-area: piede;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+  background: #fff;
+  border-top: 1px solid var(--grigio-bordo);
+}
+
+.contatore {
+  color: var(--grigio-testo);
+}
+
+/* ---------- Sezioni e campi ---------- */
+
+.scheda {
+  background: #fff;
+  border: 1px solid var(--grigio-bordo);
+  border-radius: var(--raggio);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  max-width: 1100px;
+}
+
+.scheda h2 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: var(--blu);
+}
+
+.scheda h2 .capitolo {
+  display: inline-block;
+  min-width: 34px;
+  color: var(--grigio-testo);
+  font-weight: 400;
+}
+
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.campo.largo {
+  grid-column: 1 / -1;
+}
+
+.campo > span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grigio-testo);
+}
+
+input[type='text'],
+input[type='date'],
+select,
+textarea {
+  width: 100%;
+  padding: 7px 9px;
+  font: inherit;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--grigio-bordo);
+  border-radius: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid rgba(31, 78, 121, 0.25);
+  border-color: var(--blu);
+}
+
+input:disabled {
+  background: var(--grigio-sfondo);
+  color: var(--grigio-testo);
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+input.numero {
+  text-align: right;
+}
+
+.scelte {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scelte label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.scelte input {
+  margin-top: 3px;
+}
+
+/* Dato collegato: arriva da un'altra videata o è calcolato. Non si modifica qui. */
+.collegato {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--blu-chiaro);
+  border-left: 4px solid var(--blu);
+  border-radius: 4px;
+}
+
+.collegato strong {
+  font-weight: 600;
+}
+
+.collegato .origine {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--grigio-testo);
+}
+
+.vuoto {
+  color: var(--arancio);
+  font-style: italic;
+}
+
+/* Messaggi di controllo sui dati */
+.controllo {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.controllo.ok {
+  background: #e9f5ee;
+  color: var(--verde);
+}
+
+.controllo.attenzione {
+  background: #fdf3e6;
+  color: var(--arancio);
+  font-weight: 600;
+}
+
+/* Riquadro di un totale importante */
+.totale-grande {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 14px 18px;
+  background: var(--blu);
+  color: #fff;
+  border-radius: var(--raggio);
+  font-size: 16px;
+}
+
+.totale-grande strong {
+  font-size: 22px;
+}
+
+.nota {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--grigio-testo);
+}
+
+/* ---------- Tabelle ---------- */
+
+.tabella-dati {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.tabella-dati th {
+  padding: 8px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--grigio-testo);
+  background: var(--grigio-sfondo);
+  border-bottom: 2px solid var(--grigio-bordo);
+}
+
+.tabella-dati th small {
+  font-weight: 400;
+}
+
+.tabella-dati td {
+  padding: 4px;
+  border-bottom: 1px solid var(--grigio-bordo);
+}
+
+.tabella-dati .numero {
+  text-align: right;
+}
+
+.tabella-dati td.calcolato {
+  padding-right: 10px;
+  background: var(--blu-chiaro);
+  font-weight: 600;
+}
+
+/* Cella con un valore preso da un'altra videata */
+.tabella-dati td.collegata {
+  padding-right: 10px;
+  background: #f4f8fc;
+  color: var(--blu-scuro);
+  border-left: 3px solid var(--blu);
+}
+
+.tabella-dati td.vuoto {
+  font-weight: 400;
+}
+
+.tabella-dati td.fissa {
+  padding-left: 8px;
+  font-weight: 600;
+}
+
+.tabella-dati tfoot td {
+  padding: 8px;
+  font-weight: 700;
+  background: var(--blu-chiaro);
+  border-top: 2px solid var(--blu);
+}
+
+.tabella-dati td.azioni {
+  width: 36px;
+  text-align: center;
+}
+
+/* ---------- Pulsanti ---------- */
+
+.bottone {
+  display: inline-block;
+  padding: 7px 14px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--blu);
+  border: 1px solid var(--blu);
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.bottone:hover {
+  background: var(--blu-scuro);
+}
+
+.bottone.secondario {
+  color: var(--blu);
+  background: #fff;
+}
+
+.bottone.secondario:hover {
+  background: var(--blu-chiaro);
+}
+
+.bottone.disabilitato {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.bottone-icona {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  color: var(--grigio-testo);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.bottone-icona:hover {
+  color: #b3261e;
+  border-color: #e6b8b5;
+  background: #fdf0ef;
+}

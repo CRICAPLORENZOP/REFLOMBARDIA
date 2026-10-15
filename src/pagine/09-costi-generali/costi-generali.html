@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Costi generali e commerciali – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="costi-generali.css" />
+    <script type="module" src="costi-generali.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Costi generali, soft costs e commercializzazione</h1>
+        <p class="sottotitolo">Oneri e contributi (capitolo 13), spese tecniche (capitolo 14), costi di vendita (capitolo 15).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">13</span> Costi generali</h2>
+          <table class="tabella-dati costi-generali">
+            <thead>
+              <tr>
+                <th>Voce</th>
+                <th class="numero">Importo <small>(€)</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fissa">Oneri urbanizzazione primaria</td>
+                <td><input type="text" class="numero" data-campo="costiGenerali.oneriU1" data-tipo="numero" /></td>
+              </tr>
+              <tr>
+                <td class="fissa">Oneri urbanizzazione secondaria</td>
+                <td><input type="text" class="numero" data-campo="costiGenerali.oneriU2" data-tipo="numero" /></td>
+              </tr>
+              <tr>
+                <td class="fissa">
+                  – Scomputo per opere di urbanizzazione <small class="origine-riga">facoltativo, si sottrae a U1 + U2</small>
+                </td>
+                <td><input type="text" class="numero" data-campo="costiGenerali.scomputo" data-tipo="numero" placeholder="0" /></td>
+              </tr>
+              <tr>
+                <td class="fissa">Contributo sul costo di costruzione</td>
+                <td><input type="text" class="numero" data-campo="costiGenerali.contributoCC" data-tipo="numero" /></td>
+              </tr>
+              <tr>
+                <td class="fissa">Monetizzazioni <small class="origine-riga">da cap. 8.2</small></td>
+                <td class="numero collegata" data-mostra="calc:monetizzazioni" data-unita="€"></td>
+              </tr>
+              <tr>
+                <td class="fissa">Opere pubbliche <small class="origine-riga">da cap. 7.3</small></td>
+                <td class="numero collegata" data-mostra="calc:opereAggiuntive" data-unita="€"></td>
+              </tr>
+              <tr>
+                <td class="fissa">Standard qualitativi <small class="origine-riga">da cap. 7.4</small></td>
+                <td class="numero collegata" data-mostra="calc:standardQualitativi" data-unita="€"></td>
+              </tr>
+              <tr>
+                <td class="fissa">Altri oneri</td>
+                <td><input type="text" class="numero" data-campo="costiGenerali.altriOneri" data-tipo="numero" /></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>Totale</strong></td>
+                <td class="numero" data-mostra="calc:costiGenerali" data-unita="€"></td>
+              </tr>
+            </tfoot>
+          </table>
+          <p class="controllo attenzione" id="avviso-scomputo" hidden>
+            Lo scomputo supera gli oneri U1 + U2: viene usato solo fino a
+            <strong data-mostra="calc:scomputoOneri" data-unita="€"></strong> e gli oneri di urbanizzazione diventano zero.
+          </p>
+          <p class="nota">
+            Se realizzi direttamente opere di urbanizzazione (passo 5, cap. 7.1–7.2) a scomputo, puoi scrivere gli oneri
+            <strong>lordi</strong> e indicare lo scomputo nella sua riga, oppure scrivere gli oneri già al netto e lasciare
+            lo scomputo vuoto. In entrambi i casi lo stesso costo non viene contato due volte.
+            Opere 7.1 + 7.2 inserite: <strong data-mostra="calc:urbanizzazioni" data-unita="€"></strong>.
+            Oneri U1 + U2 meno scomputo, più costo di costruzione, formano il contributo teorico del cap. 22.1.
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">14</span> Soft costs</h2>
+          <div class="collegato riferimento">
+            Costo di costruzione (cap. 12.2): <strong data-mostra="calc:costoCostruzione" data-unita="€"></strong>
+            <span class="origine">dal passo 8</span>
+          </div>
+          <div id="tabella-soft-costs"></div>
+          <p class="nota">
+            Puoi scrivere l'importo direttamente, oppure solo la <strong>%</strong>: in quel caso l'importo viene
+            calcolato sul costo di costruzione e mostrato in grigio.
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">15</span> Costi di commercializzazione</h2>
+          <div class="collegato riferimento">
+            Ricavi complessivi (cap. 10.4): <strong data-mostra="calc:ricaviComplessivi" data-unita="€"></strong>
+            <span class="origine">dal passo 7</span>
+          </div>
+          <div id="tabella-commercializzazione"></div>
+          <p class="nota">Se lasci vuota la base, viene usato il totale dei ricavi complessivi.</p>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quadro economico e contributo – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="quadro-economico.css" />
+    <script type="module" src="quadro-economico.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Quadro economico, contributo e rapporto pubblico/privato</h1>
+        <p class="sottotitolo">
+          Riepiloghi automatici (capitoli 21–23). Qui si scrivono solo la riduzione del contributo e gli eventuali altri
+          benefici pubblici.
+        </p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">21</span> Quadro economico complessivo</h2>
+          <div id="quadro-economico"></div>
+          <p class="nota" id="nota-pluri" hidden>
+            * Nel modello pluri-periodale margine del promotore e oneri finanziari non sono costi: la componente
+            finanziaria è considerata dal tasso di attualizzazione (cap. 19). Il risultato dell'operazione è il VAN.
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">22.1</span> Contributo di costruzione teorico</h2>
+          <table class="tabella-dati compatta">
+            <thead><tr><th>Componente</th><th class="numero">Importo <small>(€)</small></th></tr></thead>
+            <tbody>
+              <tr><td class="fissa">Oneri U1</td><td class="numero collegata" data-mostra="calc:oneriU1" data-unita="€"></td></tr>
+              <tr><td class="fissa">Oneri U2</td><td class="numero collegata" data-mostra="calc:oneriU2" data-unita="€"></td></tr>
+              <tr><td class="fissa">– Scomputo opere di urbanizzazione</td><td class="numero collegata" data-mostra="calc:scomputoOneri" data-unita="€"></td></tr>
+              <tr><td class="fissa">Costo di costruzione</td><td class="numero collegata" data-mostra="calc:contributoCostoCostruzione" data-unita="€"></td></tr>
+            </tbody>
+            <tfoot><tr><td><strong>Totale</strong></td><td class="numero" data-mostra="calc:contributoTeorico" data-unita="€"></td></tr></tfoot>
+          </table>
+          <p class="nota">Importi dal cap. 13 (passo 9).</p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">22.2</span> Riduzione prevista dalla normativa</h2>
+          <div class="griglia">
+            <div class="campo">
+              <span>Contributo teorico</span>
+              <div class="collegato"><strong data-mostra="calc:contributoTeorico" data-unita="€"></strong></div>
+            </div>
+            <label class="campo">
+              <span>Riduzione (%)</span>
+              <input type="text" data-campo="contributo.riduzionePercentuale" data-tipo="numero" />
+            </label>
+            <div class="campo">
+              <span>Riduzione (€)</span>
+              <div class="collegato"><strong data-mostra="calc:riduzioneContributo" data-unita="€"></strong></div>
+            </div>
+            <div class="campo">
+              <span>Contributo dopo riduzione</span>
+              <div class="collegato"><strong data-mostra="calc:contributoDopoRiduzione" data-unita="€"></strong></div>
+            </div>
+            <label class="campo largo">
+              <span>Riferimento normativo / motivazione della riduzione</span>
+              <input type="text" data-campo="contributo.motivazioneRiduzione" />
+            </label>
+          </div>
+          <p class="nota">
+            Il contributo dopo la riduzione è quello che entra nei costi (voce "Contributo costruzione e oneri" del cap.
+            17 e del quadro economico).
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">22.3</span> Eventuale rimodulazione</h2>
+          <div class="totale-grande" id="box-risultato">
+            <span id="etichetta-risultato">Saldo economico dell'operazione</span>
+            <strong data-mostra="calc:risultato" data-unita="€"></strong>
+          </div>
+          <p class="nota">
+            L'Amministrazione comunale potrà utilizzare tale risultato nell'ambito delle proprie determinazioni in merito
+            alla rimodulazione del contributo di costruzione, nei limiti e secondo le modalità previste dalla normativa.
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">23</span> Rapporto economico pubblico/privato</h2>
+          <div class="due-colonne">
+            <table class="tabella-dati">
+              <thead><tr><th>Componente pubblica</th><th class="numero">Valore <small>(€)</small></th></tr></thead>
+              <tbody>
+                <tr><td class="fissa">Aree cedute <small class="origine-riga">8.1</small></td><td class="numero collegata" data-mostra="calc:areeCedute" data-unita="€"></td></tr>
+                <tr><td class="fissa">Monetizzazioni <small class="origine-riga">8.2</small></td><td class="numero collegata" data-mostra="calc:monetizzazioni" data-unita="€"></td></tr>
+                <tr><td class="fissa">Oneri urbanizzazione <small class="origine-riga">U1+U2 ridotti + opere 7.1–7.2</small></td><td class="numero collegata" data-mostra="calc:beneficioOneriUrbanizzazione" data-unita="€"></td></tr>
+                <tr><td class="fissa">Contributo di costruzione <small class="origine-riga">ridotto</small></td><td class="numero collegata" data-mostra="calc:beneficioContributoCostruzione" data-unita="€"></td></tr>
+                <tr><td class="fissa">Opere pubbliche <small class="origine-riga">7.3</small></td><td class="numero collegata" data-mostra="calc:opereAggiuntive" data-unita="€"></td></tr>
+                <tr><td class="fissa">Standard qualitativi <small class="origine-riga">7.4</small></td><td class="numero collegata" data-mostra="calc:standardQualitativi" data-unita="€"></td></tr>
+                <tr><td class="fissa">Altri benefici</td><td><input type="text" class="numero" data-campo="pubblicoPrivato.altriBenefici" data-tipo="numero" /></td></tr>
+              </tbody>
+              <tfoot><tr><td><strong>TOTALE BENEFICI PUBBLICI</strong></td><td class="numero" data-mostra="calc:totaleBeneficiPubblici" data-unita="€"></td></tr></tfoot>
+            </table>
+
+            <table class="tabella-dati">
+              <thead><tr><th>Componente privata</th><th class="numero">Valore <small>(€)</small></th></tr></thead>
+              <tbody>
+                <tr><td class="fissa">Costo area <small class="origine-riga">11</small></td><td class="numero collegata" data-mostra="calc:costoArea" data-unita="€"></td></tr>
+                <tr><td class="fissa">Costi costruzione <small class="origine-riga">12.2</small></td><td class="numero collegata" data-mostra="calc:costoCostruzione" data-unita="€"></td></tr>
+                <tr><td class="fissa">Demolizioni <small class="origine-riga">12.1</small></td><td class="numero collegata" data-mostra="calc:demolizioni" data-unita="€"></td></tr>
+                <tr><td class="fissa">Bonifiche <small class="origine-riga">5.4</small></td><td class="numero collegata" data-mostra="calc:bonifiche" data-unita="€"></td></tr>
+                <tr><td class="fissa">Spese tecniche <small class="origine-riga">14</small></td><td class="numero collegata" data-mostra="calc:softCosts" data-unita="€"></td></tr>
+                <tr><td class="fissa">Commercializzazione <small class="origine-riga">15</small></td><td class="numero collegata" data-mostra="calc:commercializzazione" data-unita="€"></td></tr>
+                <tr><td class="fissa">Altri costi <small class="origine-riga">passo 10</small></td><td class="numero collegata" data-mostra="calc:altriCosti" data-unita="€"></td></tr>
+              </tbody>
+              <tfoot><tr><td><strong>TOTALE INVESTIMENTO PRIVATO</strong></td><td class="numero" data-mostra="calc:totaleInvestimentoPrivato" data-unita="€"></td></tr></tfoot>
+            </table>
+          </div>
+          <div class="collegato rapporto">
+            Benefici pubblici / investimento privato = <strong id="rapporto-pubblico-privato"></strong>
+          </div>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

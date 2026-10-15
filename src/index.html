@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REF Lombardia</title>
+    <link rel="stylesheet" href="comune/comune.css" />
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="index.js"></script>
+  </head>
+  <body>
+    <main class="benvenuto">
+      <div class="riquadro">
+        <h1>REF <span>Lombardia</span></h1>
+        <p class="descrizione">
+          Compilazione guidata della <strong>Relazione Economico-Finanziaria</strong><br />
+          art. 43, comma 2-quater, L.R. 12/2005 — D.G.R. XI/7729 del 28/12/2022
+        </p>
+
+        <div class="scelte-iniziali">
+          <button type="button" class="bottone grande" id="nuovo">Nuovo progetto</button>
+          <button type="button" class="bottone grande secondario" id="apri">Apri progetto…</button>
+          <button type="button" class="bottone grande secondario" id="continua" hidden>
+            Continua: <span id="nome-ultimo"></span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

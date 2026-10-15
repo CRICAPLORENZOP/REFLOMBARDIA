@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riepilogo ed esportazione – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="riepilogo.css" />
+    <script type="module" src="riepilogo.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Riepilogo ed esportazione</h1>
+        <p class="sottotitolo">
+          Quadro degli input (capitolo 26), allegati (capitolo 27), sottoscrizione (capitolo 28) e creazione della
+          relazione in Word e PDF.
+        </p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">26</span> Quadro finale degli input</h2>
+          <p class="nota primo">
+            I valori arrivano da soli dalle videate precedenti. Nella colonna "Fonte" è già scritta quella suggerita dal
+            modello: puoi cambiarla scrivendoci sopra.
+          </p>
+          <div id="tabella-input"></div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">27</span> Documentazione a supporto</h2>
+          <p class="nota primo">Spunta gli allegati che consegni insieme alla REF.</p>
+          <div class="scelte colonne-2" id="elenco-allegati"></div>
+          <button type="button" class="bottone secondario piccolo" id="spunta-suggeriti">Spunta quelli suggeriti</button>
+          <span class="nota" id="testo-suggeriti"></span>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">28</span> Sottoscrizione</h2>
+          <div class="griglia">
+            <label class="campo">
+              <span>Luogo</span>
+              <input type="text" data-campo="sottoscrizione.luogo" id="luogo-firma" />
+            </label>
+            <label class="campo">
+              <span>Data</span>
+              <input type="date" data-campo="sottoscrizione.data" />
+            </label>
+            <div class="campo">
+              <span>Tecnico incaricato</span>
+              <div class="collegato"><strong data-mostra="soggetti.tecnico.nome"></strong></div>
+            </div>
+            <div class="campo">
+              <span>Qualifica</span>
+              <div class="collegato"><strong data-mostra="soggetti.tecnico.qualifica"></strong></div>
+            </div>
+          </div>
+          <p class="nota">
+            Se lasci vuoti luogo e data vengono usati il comune e la data del passo 1. Nome e qualifica arrivano dal passo
+            1 (cap. 2.3).
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2>Esportazione della relazione</h2>
+          <p class="controllo" id="controllo-mancanti"></p>
+          <div class="pulsanti-esporta">
+            <button type="button" class="bottone" id="esporta-word">Esporta Word (.docx)</button>
+            <button type="button" class="bottone" id="esporta-pdf">Esporta PDF</button>
+          </div>
+          <p class="nota">
+            <strong>Word</strong>: crea un file modificabile. <strong>PDF</strong>: si apre la finestra di stampa; come
+            stampante scegli <em>"Microsoft Print to PDF"</em> oppure <em>"Salva come PDF"</em>. In entrambi i casi le righe
+            vuote delle tabelle vengono omesse e i dati mancanti compaiono come <span class="manca">[●]</span>.
+          </p>
+          <p class="controllo ok" id="esito-esportazione" hidden></p>
+        </section>
+
+        <section class="scheda larga" id="scheda-anteprima">
+          <h2>Anteprima della relazione</h2>
+          <div class="foglio" id="anteprima"></div>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

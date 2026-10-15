@@ -1,0 +1,6 @@
+/* Stili specifici della videata "Frontespizio e soggetti" */
+
+.campo input[data-campo='frontespizio.denominazione'] {
+  font-size: 16px;
+  font-weight: 600;
+}

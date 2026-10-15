@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stato di progetto – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="stato-progetto.css" />
+    <script type="module" src="stato-progetto.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Stato di progetto</h1>
+        <p class="sottotitolo">Descrizione dell'intervento e consistenze di progetto (capitolo 6).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">6.1</span> Descrizione dell'intervento</h2>
+          <label class="campo">
+            <span>Il progetto prevede:</span>
+            <textarea data-campo="statoProgetto.descrizione" placeholder="Descrizione sintetica dell'intervento"></textarea>
+          </label>
+
+          <p class="nota primo">In particolare (lascia vuote le voci che non interessano):</p>
+          <div class="griglia">
+            <label class="campo">
+              <span>Demolizione di</span>
+              <input type="text" data-campo="statoProgetto.interventi.demolizione" />
+              <small class="suggerimento">
+                Volume esistente (cap. 5.2): <strong data-mostra="calc:volumeEsistente" data-unita="m³"></strong>
+              </small>
+            </label>
+            <label class="campo">
+              <span>Realizzazione di</span>
+              <input type="text" data-campo="statoProgetto.interventi.realizzazione" />
+            </label>
+            <label class="campo">
+              <span>Recupero di</span>
+              <input type="text" data-campo="statoProgetto.interventi.recupero" />
+            </label>
+            <label class="campo">
+              <span>Nuova costruzione di</span>
+              <input type="text" data-campo="statoProgetto.interventi.nuovaCostruzione" />
+            </label>
+            <label class="campo">
+              <span>Modifica della destinazione d'uso di</span>
+              <input type="text" data-campo="statoProgetto.interventi.cambioDestinazione" />
+            </label>
+          </div>
+          <div class="scelte opere">
+            <label><input type="checkbox" data-campo="statoProgetto.interventi.spaziPubblici" /> Realizzazione di spazi pubblici</label>
+            <label><input type="checkbox" data-campo="statoProgetto.interventi.urbanizzazioni" /> Realizzazione di opere di urbanizzazione</label>
+            <label><input type="checkbox" data-campo="statoProgetto.interventi.interessePubblico" /> Realizzazione di opere di interesse pubblico</label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">6.2</span> Consistenza di progetto</h2>
+          <div id="tabella-destinazioni"></div>
+          <div id="controllo-slp" class="controllo" hidden></div>
+          <p class="nota">
+            La <strong>superficie commerciale</strong> verrà usata per i ricavi (cap. 10.1), la <strong>SLP</strong> per i
+            costi di costruzione (cap. 12.2).
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">6.3</span> Box, autorimesse e pertinenze</h2>
+          <div id="tabella-pertinenze"></div>
+          <p class="nota">
+            Il valore unitario dei box è quello adottato nel mercato immobiliare (passo 6, cap. 9.3). Il totale va
+            automaticamente nei ricavi (cap. 10.2).
+          </p>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

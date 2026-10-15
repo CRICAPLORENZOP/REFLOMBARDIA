@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Costo area e trasformazione – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="costi-trasformazione.css" />
+    <script type="module" src="costi-trasformazione.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Costo dell'area e costi di trasformazione</h1>
+        <p class="sottotitolo">Costo iniziale dell'area/immobile (capitolo 11), demolizioni e costruzione (capitolo 12).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">11</span> Costo dell'area/immobile</h2>
+          <label class="campo metodo">
+            <span>Il valore è determinato sulla base di</span>
+            <select data-campo="costoArea.metodo">
+              <option value="">— scegli —</option>
+              <option>Atto di acquisto</option>
+              <option>Stima</option>
+              <option>Comparabili</option>
+              <option>Altra metodologia</option>
+            </select>
+          </label>
+          <div id="tabella-costo-area"></div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">12.1</span> Demolizioni</h2>
+          <div id="tabella-demolizioni"></div>
+          <div class="collegato" id="proposta-volume">
+            Volume esistente (cap. 5.2): <strong data-mostra="calc:volumeEsistente" data-unita="m³"></strong>
+            <button type="button" class="bottone secondario piccolo" id="usa-volume">Usa come quantità da demolire</button>
+            <span class="origine">dal passo 3 – Stato di fatto</span>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">12.2</span> Costi di costruzione</h2>
+          <div id="tabella-costruzione"></div>
+          <p class="nota">
+            Se lasci vuota la superficie, viene usata automaticamente la <strong>SLP</strong> della stessa destinazione
+            (cap. 6.2, passo 4), mostrata in grigio. Se scrivi un numero, vale quello.
+          </p>
+          <label class="campo fonte">
+            <span>Fonte dei prezzi</span>
+            <select data-campo="trasformazione.fonteCostruzione">
+              <option value="">— scegli —</option>
+              <option>Prezzario Regione Lombardia</option>
+              <option>DEI</option>
+              <option>Computo metrico</option>
+              <option>Preventivi</option>
+            </select>
+          </label>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

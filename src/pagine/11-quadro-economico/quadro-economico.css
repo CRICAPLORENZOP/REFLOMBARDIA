@@ -1,0 +1,68 @@
+/* Stili specifici della videata "Quadro economico e contributo" */
+
+.quadro {
+  width: 100%;
+  max-width: 680px;
+}
+
+.quadro tr.sezione td {
+  padding-top: 14px;
+  font-weight: 700;
+  color: var(--blu);
+  background: #fff;
+  border-bottom: 2px solid var(--blu);
+}
+
+.quadro tr.subtotale td {
+  font-weight: 700;
+  background: var(--blu-chiaro);
+}
+
+.quadro tr.saldo td {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--blu);
+}
+
+.quadro tr.saldo.negativo td {
+  background: #a23b2a;
+}
+
+.quadro td.non-applicabile {
+  color: var(--grigio-testo);
+  font-style: italic;
+}
+
+.compatta {
+  max-width: 480px;
+}
+
+.origine-riga {
+  margin-left: 6px;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--grigio-testo);
+}
+
+.due-colonne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.due-colonne td:last-child {
+  width: 150px;
+}
+
+.totale-grande {
+  max-width: 680px;
+}
+
+.totale-grande.negativo {
+  background: #a23b2a;
+}
+
+.rapporto {
+  margin-top: 6px;
+}

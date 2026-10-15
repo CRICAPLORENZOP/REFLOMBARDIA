@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modello di valutazione – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="valutazione.css" />
+    <script type="module" src="valutazione.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Modello di valutazione</h1>
+        <p class="sottotitolo">Scelta del modello (cap. 16), calcolo mono-periodale (cap. 17) o pluri-periodale (cap. 18–20).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">16</span> Scelta del modello di valutazione</h2>
+          <div class="griglia">
+            <label class="campo">
+              <span>Durata prevista dell'intervento (anni)</span>
+              <input type="text" id="durata" data-campo="valutazione.durata" data-tipo="numero" />
+            </label>
+          </div>
+          <div class="scelte modello">
+            <label>
+              <input type="radio" name="modello" value="mono" data-campo="valutazione.modello" />
+              <span><strong>Modello mono-periodale</strong> — criterio economico/margine (interventi semplici e brevi)</span>
+            </label>
+            <label>
+              <input type="radio" name="modello" value="pluri" data-campo="valutazione.modello" />
+              <span><strong>Modello pluri-periodale</strong> — criterio finanziario, flussi distribuiti nel tempo (operazioni complesse e pluriennali)</span>
+            </label>
+          </div>
+          <div id="suggerimento-modello" class="controllo" hidden></div>
+          <label class="campo motivazione">
+            <span>Motivazione della scelta</span>
+            <textarea data-campo="valutazione.motivazione"></textarea>
+          </label>
+        </section>
+
+        <section class="scheda">
+          <h2 data-aiuto="altriCosti">Altri costi</h2>
+          <p class="nota primo">
+            Costi non compresi nelle videate precedenti. Entrano nella voce "Altri costi" di entrambi i modelli e nel
+            quadro economico.
+          </p>
+          <div class="griglia">
+            <label class="campo">
+              <span>Importo (€)</span>
+              <input type="text" data-campo="valutazione.altriCosti" data-tipo="numero" />
+            </label>
+            <label class="campo">
+              <span>Descrizione</span>
+              <input type="text" data-campo="valutazione.descrizioneAltriCosti" />
+            </label>
+          </div>
+        </section>
+
+        <p class="scegli-modello" data-visibile-se="valutazione.modello=">
+          Scegli il modello di valutazione qui sopra per proseguire con il calcolo.
+        </p>
+
+        <!-- ================= MODELLO MONO-PERIODALE ================= -->
+        <div data-visibile-se="valutazione.modello=mono">
+          <section class="scheda">
+            <h2><span class="capitolo">17.1</span> Ricavi</h2>
+            <div class="collegato">
+              A = <strong data-mostra="calc:ricaviComplessivi" data-unita="€"></strong>
+              <span class="origine">ricavi complessivi, cap. 10.4</span>
+            </div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">17.2</span> Costi</h2>
+            <div id="tabella-costi-mono"></div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">17.3</span> Margine ordinario del promotore</h2>
+            <div class="griglia">
+              <div class="campo">
+                <span>Metodo</span>
+                <div class="scelte in-linea">
+                  <label><input type="radio" name="metodo-margine" value="costi" data-campo="valutazione.metodoMargine" /> % dei costi</label>
+                  <label><input type="radio" name="metodo-margine" value="ricavi" data-campo="valutazione.metodoMargine" /> % dei ricavi</label>
+                </div>
+              </div>
+              <label class="campo">
+                <span>Parametro (%)</span>
+                <input type="text" data-campo="valutazione.percentualeMargine" data-tipo="numero" />
+              </label>
+              <div class="campo">
+                <span>Margine</span>
+                <div class="collegato"><strong data-mostra="calc:marginePromotore" data-unita="€"></strong></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">17.4</span> Oneri finanziari</h2>
+            <label class="campo stretto">
+              <span>Importo (€)</span>
+              <input type="text" data-campo="valutazione.oneriFinanziari" data-tipo="numero" />
+            </label>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">17.5</span> Costi complessivi e <span class="capitolo">17.6</span> risultato</h2>
+            <table class="riepilogo">
+              <tr><td>Costi (17.2)</td><td data-mostra="calc:subtotaleCosti" data-unita="€"></td></tr>
+              <tr><td>Margine del promotore (17.3)</td><td data-mostra="calc:marginePromotore" data-unita="€"></td></tr>
+              <tr><td>Oneri finanziari (17.4)</td><td data-mostra="calc:oneriFinanziari" data-unita="€"></td></tr>
+              <tr class="forte"><td>B = Costi complessivi</td><td data-mostra="calc:costiComplessiviMono" data-unita="€"></td></tr>
+              <tr><td>A = Ricavi complessivi</td><td data-mostra="calc:ricaviComplessivi" data-unita="€"></td></tr>
+            </table>
+            <div class="totale-grande" id="box-saldo">
+              SALDO = A – B <strong data-mostra="calc:saldoMono" data-unita="€"></strong>
+            </div>
+            <div class="collegato margine-percentuale">
+              <span class="capitolo">17.7</span> Margine percentuale = Saldo / Ricavi × 100 =
+              <strong data-mostra="calc:marginePercentuale" data-unita="%"></strong>
+            </div>
+          </section>
+        </div>
+
+        <!-- ================= MODELLO PLURI-PERIODALE ================= -->
+        <div data-visibile-se="valutazione.modello=pluri">
+          <section class="scheda larga">
+            <h2><span class="capitolo">18</span> Distribuzione temporale dei flussi</h2>
+            <p class="nota primo">
+              Per ogni voce scrivi in che <strong>percentuale</strong> cade in ciascun anno (la somma deve fare 100%). Il
+              pulsante <strong>÷</strong> la divide in parti uguali su tutti gli anni. Gli importi totali arrivano dalle
+              videate precedenti.
+            </p>
+            <div id="tabella-distribuzione" class="scorrevole"></div>
+          </section>
+
+          <section class="scheda larga">
+            <h2 data-aiuto="flussi">Flussi anno per anno</h2>
+            <div id="tabella-flussi" class="scorrevole"></div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">19</span> Tasso di attualizzazione</h2>
+            <div class="griglia">
+              <label class="campo">
+                <span>Tasso adottato (%)</span>
+                <input type="text" data-campo="valutazione.tasso" data-tipo="numero" />
+              </label>
+              <label class="campo">
+                <span>WACC (%), ove pertinente</span>
+                <input type="text" data-campo="valutazione.wacc" data-tipo="numero" />
+              </label>
+              <label class="campo largo">
+                <span>Motivazione del tasso (rischio, durata, struttura finanziaria, costo del debito, rendimento del capitale proprio, mercato)</span>
+                <textarea data-campo="valutazione.motivazioneTasso"></textarea>
+              </label>
+            </div>
+          </section>
+
+          <section class="scheda">
+            <h2><span class="capitolo">20</span> Valore attuale netto</h2>
+            <p class="formula">VAN = Σ FCₜ / (1+r)ᵗ</p>
+            <div class="totale-grande" id="box-van">
+              VAN <strong data-mostra="calc:van" data-unita="€"></strong>
+            </div>
+            <div class="collegato margine-percentuale">
+              TIR (tasso che rende il VAN uguale a zero) = <strong data-mostra="calc:tir" data-unita="%"></strong>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

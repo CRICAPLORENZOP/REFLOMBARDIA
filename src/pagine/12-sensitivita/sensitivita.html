@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensitività e conclusioni – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="sensitivita.css" />
+    <script type="module" src="sensitivita.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Analisi di sensitività e conclusioni</h1>
+        <p class="sottotitolo">
+          Il programma ricalcola da solo il risultato cambiando prezzi e costi (capitolo 24) e riassume i risultati
+          (capitolo 25).
+        </p>
+
+        <p class="controllo attenzione" id="avviso-modello" hidden>
+          Non hai ancora scelto il modello di valutazione (passo 10): i risultati sono calcolati come saldo del modello
+          mono-periodale.
+        </p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">24</span> Analisi di sensitività</h2>
+          <p class="nota primo">
+            Per verificare la stabilità del risultato vengono modificati i principali parametri dell'operazione.
+            <span id="spiegazione-risultato"></span>
+          </p>
+          <div class="griglia variazioni">
+            <label class="campo">
+              <span>Variazione prezzi di vendita (%)</span>
+              <input type="text" data-campo="sensitivita.variazionePrezzi" data-tipo="numero" placeholder="10" />
+            </label>
+            <label class="campo">
+              <span>Variazione costi di costruzione (%)</span>
+              <input type="text" data-campo="sensitivita.variazioneCosti" data-tipo="numero" placeholder="10" />
+            </label>
+          </div>
+          <p class="nota">
+            Se lasci vuote le caselle si usa il 10%, come nel modello. Le stesse percentuali valgono per gli scenari
+            qui sotto e per la matrice (cap. 24.6).
+          </p>
+          <div id="tabella-scenari"></div>
+          <p class="nota">
+            "Prezzi" = valori di vendita adottati al cap. 9.3 (immobili, box e pertinenze); gli altri ricavi restano
+            invariati. "Costi" = costi di costruzione del cap. 12.2. Le voci collegate (commercializzazione, spese
+            tecniche in %, margine del promotore) si ricalcolano di conseguenza.
+          </p>
+        </section>
+
+        <section class="scheda" id="scheda-ritardo-mono" hidden>
+          <h2><span class="capitolo">24.5</span> Ritardo di 12 mesi (modello mono-periodale)</h2>
+          <p class="nota primo">
+            Il modello mono-periodale non distribuisce i flussi nel tempo, quindi l'effetto del ritardo va stimato a mano:
+            ad esempio saldo base meno gli oneri finanziari e i costi aggiuntivi dovuti a un anno in più.
+            Saldo base: <strong data-mostra="calc:saldoMono" data-unita="€"></strong>.
+          </p>
+          <div class="griglia">
+            <label class="campo">
+              <span>Saldo con ritardo di 12 mesi (€)</span>
+              <input type="text" data-campo="sensitivita.ritardoMono" data-tipo="numero" />
+            </label>
+            <label class="campo largo">
+              <span>Come è stato stimato</span>
+              <input type="text" data-campo="sensitivita.motivazioneRitardo" />
+            </label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">24.6</span> Matrice</h2>
+          <p class="nota primo">Ogni casella è il risultato con quella combinazione di ricavi e costi.</p>
+          <div id="matrice"></div>
+          <label class="campo commento">
+            <span>Commento all'analisi di sensitività (facoltativo)</span>
+            <textarea rows="3" data-campo="sensitivita.commento"></textarea>
+          </label>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">25</span> Conclusioni</h2>
+          <p class="nota primo">Dall'analisi effettuata risulta che:</p>
+          <div id="riepilogo-conclusioni"></div>
+          <p class="controllo" id="esito-sensitivita"></p>
+          <div class="testo-fisso">
+            <p>
+              L'operazione presenta pertanto le caratteristiche economico-finanziarie descritte nella presente relazione.
+              Le risultanze sono strettamente correlate alle ipotesi progettuali, urbanistiche, economiche e temporali
+              indicate.
+            </p>
+            <p>
+              La presente REF costituisce documento tecnico di supporto alle determinazioni dell'Amministrazione comunale
+              e non sostituisce le ulteriori valutazioni urbanistiche, ambientali, sociali e amministrative necessarie ai
+              fini dell'approvazione dell'intervento.
+            </p>
+            <p>
+              La stessa D.G.R. chiarisce che la sostenibilità economico-finanziaria costituisce soltanto uno degli
+              elementi della valutazione pubblica e che i modelli non internalizzano automaticamente gli effetti
+              ambientali e sociali dell'intervento.
+            </p>
+          </div>
+          <label class="campo commento">
+            <span>Considerazioni aggiuntive (facoltativo)</span>
+            <textarea rows="4" data-campo="conclusioni.considerazioni"></textarea>
+          </label>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

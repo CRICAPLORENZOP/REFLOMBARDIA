@@ -1,0 +1,16 @@
+/* Stili specifici della videata "Area e urbanistica" */
+
+.scelta-st {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.motivazione {
+  margin-top: 14px;
+}
+
+#tabella-catasto .tabella-dati td:nth-child(-n + 3) input {
+  max-width: 140px;
+}

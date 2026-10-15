@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercato immobiliare – REF Lombardia</title>
+    <link rel="stylesheet" href="../../comune/comune.css" />
+    <link rel="stylesheet" href="mercato.css" />
+    <script type="module" src="mercato.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header id="intestazione"></header>
+      <nav id="passi"></nav>
+
+      <main class="contenuto">
+        <h1>Mercato immobiliare di riferimento</h1>
+        <p class="sottotitolo">Fonti, quotazioni e valori unitari adottati (capitolo 9).</p>
+
+        <section class="scheda">
+          <h2><span class="capitolo">9.1</span> Fonti</h2>
+          <p class="nota primo">La determinazione dei valori immobiliari viene effettuata mediante confronto tra:</p>
+          <div class="scelte colonne-2">
+            <label><input type="checkbox" data-campo="mercato.fonti.omi" /> Quotazioni OMI</label>
+            <label><input type="checkbox" data-campo="mercato.fonti.osmi" /> Fonti camerali/OSMI, ove disponibili</label>
+            <label><input type="checkbox" data-campo="mercato.fonti.comparabili" /> Comparabili di mercato</label>
+            <label><input type="checkbox" data-campo="mercato.fonti.pubblicazioni" /> Pubblicazioni specialistiche</label>
+            <label><input type="checkbox" data-campo="mercato.fonti.offerte" /> Offerte immobiliari opportunamente normalizzate</label>
+            <label><input type="checkbox" data-campo="mercato.fonti.perizie" /> Eventuali perizie/stime disponibili</label>
+          </div>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">9.2</span> Quotazioni di riferimento</h2>
+          <div id="tabella-quotazioni"></div>
+          <p class="nota">Il valore medio è calcolato automaticamente come riferimento per scegliere i valori adottati.</p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">9.3</span> Valori adottati</h2>
+          <div class="valori-adottati">
+            <div id="tabella-valori"></div>
+            <label class="campo valore-box">
+              <span>Box (€/cad.)</span>
+              <input type="text" data-campo="mercato.valoreBox" data-tipo="numero" />
+            </label>
+          </div>
+          <p class="nota">
+            I valori €/m² vanno automaticamente nei ricavi (cap. 10.1); il valore dei box nella tabella pertinenze (cap.
+            6.3).
+          </p>
+        </section>
+
+        <section class="scheda">
+          <h2><span class="capitolo">9.4</span> Motivazione</h2>
+          <p class="nota primo">I valori adottati sono stati determinati tenendo conto di:</p>
+          <div class="scelte colonne-3">
+            <label><input type="checkbox" data-campo="mercato.fattori.localizzazione" /> Localizzazione</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.accessibilita" /> Accessibilità</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.qualitaUrbana" /> Qualità urbana</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.caratteristicheProgettuali" /> Caratteristiche progettuali</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.statoManutentivo" /> Stato manutentivo</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.piano" /> Piano</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.esposizione" /> Esposizione</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.dotazionePertinenziale" /> Dotazione pertinenziale</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.qualitaEnergetica" /> Qualità energetica</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.nuovoIntervento" /> Caratteristiche del nuovo intervento</label>
+            <label><input type="checkbox" data-campo="mercato.fattori.mercatoLocale" /> Condizioni del mercato locale</label>
+          </div>
+          <label class="campo motivazione">
+            <span>Ulteriori considerazioni (facoltativo)</span>
+            <textarea data-campo="mercato.motivazione"></textarea>
+          </label>
+        </section>
+      </main>
+
+      <footer id="piede"></footer>
+    </div>
+  </body>
+</html>

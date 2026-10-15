@@ -1,0 +1,26 @@
+/* Stili specifici della videata "Costi generali e commerciali" */
+
+.costi-generali {
+  max-width: 620px;
+}
+
+.costi-generali td:last-child {
+  width: 220px;
+}
+
+.origine-riga {
+  margin-left: 6px;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--grigio-testo);
+}
+
+.riferimento {
+  margin-bottom: 12px;
+  max-width: 620px;
+}
+
+#tabella-soft-costs td.fissa,
+#tabella-commercializzazione td.fissa {
+  width: 200px;
+}

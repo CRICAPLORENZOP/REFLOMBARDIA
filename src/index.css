@@ -1,0 +1,44 @@
+/* Pagina iniziale */
+
+.benvenuto {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--blu) 0%, var(--blu-scuro) 100%);
+}
+
+.riquadro {
+  width: 520px;
+  padding: 40px 44px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.riquadro h1 {
+  margin: 0 0 8px;
+  font-size: 36px;
+  color: var(--blu);
+}
+
+.riquadro h1 span {
+  font-weight: 300;
+}
+
+.descrizione {
+  margin: 0 0 30px;
+  line-height: 1.6;
+  color: var(--grigio-testo);
+}
+
+.scelte-iniziali {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bottone.grande {
+  padding: 12px;
+  font-size: 15px;
+}
