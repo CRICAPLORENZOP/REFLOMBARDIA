@@ -36,11 +36,9 @@ jobs:
           tagName: v__VERSION__
           releaseName: 'REF Lombardia v__VERSION__'
           releaseBody: |
-            Prima release di REF Lombardia, la compilazione guidata della Relazione economico-finanziaria.
+            Zoom della finestra con Ctrl e la rotellina del mouse. Ctrl e 0 riporta la dimensione normale.
 
-            Include i tooltip con i requisiti dell'Allegato A e l'apertura della delibera e dell'Allegato A dalla barra laterale.
-
-            Scarica l'installer se è la prima installazione.
+            Scarica l'installer per installare o sostituire la versione precedente.
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
